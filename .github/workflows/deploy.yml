@@ -36,6 +36,22 @@ jobs:
       - name: Install FTP client
         run: sudo apt-get update && sudo apt-get install -y lftp
 
+      - name: Debug - List FTP directory structure
+        env:
+          FTP_HOST: ${{ secrets.CPANEL_HOST }}
+          FTP_USER: ${{ secrets.CPANEL_USERNAME }}
+          FTP_PASS: ${{ secrets.CPANEL_PASSWORD }}
+          FTP_PORT: ${{ secrets.CPANEL_PORT }}
+        run: |
+          echo "Listing FTP root directory..."
+          lftp -c "
+          set ftp:ssl-allow no;
+          open -u $FTP_USER,$FTP_PASS -p $FTP_PORT $FTP_HOST;
+          pwd;
+          ls -la;
+          quit
+          "
+
       - name: Deploy to cPanel via FTP
         env:
           FTP_HOST: ${{ secrets.CPANEL_HOST }}
@@ -47,8 +63,24 @@ jobs:
           lftp -c "
           set ftp:ssl-allow no;
           open -u $FTP_USER,$FTP_PASS -p $FTP_PORT $FTP_HOST;
-          cd $FTP_DIR || exit 1;
+          echo 'Current directory after login:';
+          pwd;
+          echo 'Attempting to change to: $FTP_DIR';
+          cd $FTP_DIR || (
+            echo 'Failed with absolute path. Trying relative path...';
+            cd public_html || (
+              echo 'Failed with public_html. Trying /public_html...';
+              cd /public_html || (
+                echo 'All path attempts failed. Current directory contents:';
+                ls -la;
+                exit 1
+              )
+            )
+          );
+          echo 'Successfully changed to:';
+          pwd;
           lcd dist;
+          echo 'Starting file upload...';
           mirror --reverse --delete --verbose --exclude-glob=.git* --exclude-glob=node_modules/*;
           quit
           "
