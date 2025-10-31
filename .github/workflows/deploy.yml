@@ -33,18 +33,23 @@ jobs:
       - name: List build files (debug)
         run: ls -la dist/
 
+      - name: Install FTP client
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
       - name: Deploy to cPanel via FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.6
-        with:
-          server: ${{ secrets.CPANEL_HOST }}
-          username: ${{ secrets.CPANEL_USERNAME }}
-          password: ${{ secrets.CPANEL_PASSWORD }}
-          port: ${{ secrets.CPANEL_PORT }}
-          local-dir: ./dist/
-          server-dir: ${{ secrets.CPANEL_REMOTE_PATH }}
-          dangerous-clean-slate: true
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
+        env:
+          FTP_HOST: ${{ secrets.CPANEL_HOST }}
+          FTP_USER: ${{ secrets.CPANEL_USERNAME }}
+          FTP_PASS: ${{ secrets.CPANEL_PASSWORD }}
+          FTP_PORT: ${{ secrets.CPANEL_PORT }}
+          FTP_DIR: ${{ secrets.CPANEL_REMOTE_PATH }}
+        run: |
+          lftp -c "
+          set ftp:ssl-allow no;
+          open -u $FTP_USER,$FTP_PASS -p $FTP_PORT $FTP_HOST;
+          cd $FTP_DIR || exit 1;
+          lcd dist;
+          mirror --reverse --delete --verbose --exclude-glob=.git* --exclude-glob=node_modules/*;
+          quit
+          "
 
