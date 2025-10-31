@@ -52,7 +52,7 @@ jobs:
           quit
           "
 
-      - name: Deploy to cPanel via FTP
+      - name: Deploy to cPanel via FTP (Clean & Replace)
         env:
           FTP_HOST: ${{ secrets.CPANEL_HOST }}
           FTP_USER: ${{ secrets.CPANEL_USERNAME }}
@@ -79,9 +79,17 @@ jobs:
           );
           echo 'Successfully changed to:';
           pwd;
+          echo 'Cleaning all existing WordPress files...';
+          # Delete WordPress directories
+          rm -rf wp-admin wp-content wp-includes || true;
+          # Delete WordPress core files
+          rm -f wp-*.php index.php license.txt readme.html wp-config-sample.php wp-load.php wp-blog-header.php wp-comments-post.php wp-cron.php wp-links-opml.php wp-activate.php || true;
+          # Delete any other WordPress-related files
+          rm -f error_log xmlrpc.php .htaccess || true;
+          echo 'Deleted WordPress files. Starting upload of new React app...';
           lcd dist;
-          echo 'Starting file upload...';
-          mirror --reverse --delete --verbose --exclude-glob=.git* --exclude-glob=node_modules/*;
+          # Use mirror with delete to sync files (uploads new, deletes any remaining old files)
+          mirror --reverse --delete --verbose --exclude-glob=.git* --exclude-glob=node_modules/* --parallel=5;
           quit
           "
 
