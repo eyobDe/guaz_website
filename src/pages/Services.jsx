@@ -10,10 +10,9 @@ const Services = () => (
         </Link>{" "}
         / <span className="text-primary-dark">Services</span>
       </nav>
-      <h1 className="text-4xl font-semibold">Core services designed for Addis Ababa and beyond</h1>
+      <h1 className="text-4xl font-semibold">End-to-End Logistics Solutions for Every Client Segment in Addis Ababa.</h1>
       <p className="max-w-3xl text-lg text-muted">
-        Every relocation, delivery, and logistics program is tailored to match your timeline. We combine
-        reliable crews, purpose-built vehicles, and tech-enabled coordination to safeguard every move.
+        We offer a full spectrum of integrated logistics services supporting key sectors: Construction & Real Estate, Manufacturers & Suppliers, Households & Offices, and E-Commerce & Retail Chains. We have the specialized personnel and technical infrastructure to manage your specific transport challenge anywhere in Ethiopia.
       </p>
     </div>
 
@@ -22,10 +21,9 @@ const Services = () => (
         <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-primary-dark">
           Core Services
         </span>
-        <h2 className="text-3xl">Services we serve</h2>
+        <h2 className="text-3xl">Our Core Solutions</h2>
         <p className="max-w-3xl text-muted">
-          From residential moves to complex industrial projects, GuazExpress delivers comprehensive
-          moving logistics with customer-first care.
+          From residential moves to complex industrial projects, GuazExpress delivers comprehensive moving logistics with customer-first care.
         </p>
       </header>
       <div className="grid gap-6 lg:grid-cols-2">

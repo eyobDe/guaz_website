@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { supportHighlights } from "../data/siteContent";
+import { sendOrderEmails } from "../utils/email";
 
 const initialState = {
   userType: "",
@@ -25,7 +26,7 @@ const Order = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!formData.userType || !formData.firstName || !formData.lastName || !formData.phone || !formData.pickup || !formData.delivery || !formData.serviceType) {
@@ -33,8 +34,17 @@ const Order = () => {
       return;
     }
 
-    setStatus({ type: "success", message: "Thanks for reaching out. Our coordination team will contact you shortly." });
-    setFormData(initialState);
+    try {
+      setStatus({ type: "loading", message: "Submitting your order..." });
+      await sendOrderEmails(formData);
+      setStatus({ type: "success", message: "Thanks for reaching out. Our coordination team will contact you shortly." });
+      setFormData(initialState);
+    } catch (error) {
+      setStatus({
+        type: "error",
+        message: error?.message || "We could not submit your order. Please try again or call our team directly.",
+      });
+    }
   };
 
   return (
@@ -220,12 +230,10 @@ const Order = () => {
                 className="w-full rounded-2xl border border-slate/15 bg-surface-light px-4 py-3 text-sm text-slate outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
               >
                 <option value="">Select a service</option>
-                <option>Home and Office Move</option>
-                <option>Vehicle Ordering</option>
-                <option>Consumer Goods Delivery</option>
-                <option>Building Material Transport</option>
-                <option>Industrial Goods Logistics</option>
-                <option>Public Products Distribution</option>
+                <option>Household & Office Relocation</option>
+                <option>Last-Mile Delivery Network</option>
+                <option>Industrial & Commercial Logistics</option>
+                <option>Technology & Innovation Support</option>
               </select>
             </div>
 
@@ -249,6 +257,8 @@ const Order = () => {
                 className={`rounded-2xl border px-4 py-3 text-sm ${
                   status.type === "success"
                     ? "border-primary/30 bg-primary/10 text-primary-dark"
+                    : status.type === "loading"
+                    ? "border-primary/20 bg-primary/5 text-primary-dark"
                     : "border-red-200 bg-red-50 text-red-600"
                 }`}
               >

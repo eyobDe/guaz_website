@@ -16,12 +16,10 @@ const Home = () => (
           Trusted Logistics
         </span>
         <h1 className="text-4xl leading-tight sm:text-5xl">
-          City logistics that move Addis Ababa forward.
+          GuazExpress | City Logistics That Move Addis Ababa Forward. Your Premier and Trusted Ethiopian Logistics Company.
         </h1>
         <p className="text-lg text-muted">
-          GuazExpress is your partner for dependable relocations, vehicle deliveries, and specialized
-          transport. We blend technology, operational excellence, and a passionate team to deliver
-          moving experiences customers can trust.
+          AfroBin Logistics - Guaz Express is the premier Ethiopian logistics company specializing in dependable relocations, fast last-mile delivery mainly in Addis Ababa and reliable industrial cargo transportation. We leverage advanced software and operational excellence to deliver smarter, faster and more efficient transport experiences across Ethiopia's growing urban centers.
         </p>
         <div className="flex flex-wrap gap-4">
           <Link
@@ -39,9 +37,9 @@ const Home = () => (
         </div>
       </div>
       <div className="grid gap-4 rounded-2xl border border-slate/10 bg-white p-8 shadow-soft">
-        <h2 className="text-2xl font-semibold">Why customers choose GuazExpress</h2>
+        <h2 className="text-2xl font-semibold">Logistics Excellence Built on Scale and Reliability in Ethiopia.</h2>
         <p className="text-sm text-muted">
-          Reliability, teamwork, efficiency, and innovation are at the heart of every delivery.
+          Our commitment to reliability, teamwork and innovation ensures flawless execution on every delivery. We are built to handle the scale of Addis Ababa's logistics demands, utilizing a vast network of 300+ independent trucks and smart technology to guarantee your cargo arrives safely and on time, every time.
         </p>
         <div className="grid gap-4 sm:grid-cols-2">
           {heroStats.map(({ value, label }) => (
@@ -64,10 +62,9 @@ const Home = () => (
         <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-primary-dark">
           Our Promise
         </span>
-        <h2 className="text-3xl sm:text-4xl">Logistics powered by purpose</h2>
+        <h2 className="text-3xl sm:text-4xl">Logistics Powered by Purpose: Our Vision for Ethiopia’s Future.</h2>
         <p className="text-muted">
-          From first contact to final delivery, we orchestrate every move with precision. Our values
-          guide how we collaborate with partners, support communities, and create memorable experiences.
+          Our values guide how we collaborate, support communities and create memorable moving experiences. Our Vision is to revolutionize logistics in Ethiopia through innovation, reliability, and unmatched service excellence. Our Mission is to deliver secure, timely and cost-effective logistics solutions for every client segment, from B2C e-commerce to heavy industrial B2B transport.
         </p>
       </header>
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -84,10 +81,9 @@ const Home = () => (
         <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-primary-dark">
           Our Services
         </span>
-        <h2 className="text-3xl sm:text-4xl">Everything you need to relocate with confidence</h2>
+        <h2 className="text-3xl sm:text-4xl">Our Core Solutions — Moving Ethiopia’s Economy.</h2>
         <p className="text-muted">
-          We offer a full spectrum of moving and logistics services for households, businesses, public
-          sector partners, and industrial clients across Ethiopia.
+          We offer a full spectrum of moving and logistics services tailored for households, major businesses, public sector partners and the rapidly growing e-commerce sector across the Ethiopian market.
         </p>
       </header>
       <div className="grid gap-6 lg:grid-cols-3">

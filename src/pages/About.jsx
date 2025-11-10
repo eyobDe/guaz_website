@@ -10,11 +10,9 @@ const About = () => (
         </Link>{" "}
         / <span className="text-primary-dark">About</span>
       </nav>
-      <h1 className="text-4xl font-semibold">First logistics company for moving services in Ethiopia.</h1>
+      <h1 className="text-4xl font-semibold">AfroBin Logistics - Guaz Express: Ethiopia’s Pioneering Technology-Driven Logistics Company.</h1>
       <p className="max-w-3xl text-lg text-muted">
-        We are on a mission to make city logistics frictionless. GuazExpress blends supply chain
-        expertise, technology leadership, and financial stewardship to serve Addis Ababa and regions
-        beyond.
+        AfroBin Logistics - Guaz Express is a premier Ethiopian logistics company specializing in movers and packers relocation services, last-mile delivery, and industrial cargo transportation. Established in Addis Ababa with a commitment to efficiency, technology, and customer satisfaction, we operate a fleet integrated with a custom-built logistics management system to deliver end-to-end solutions tailored to Ethiopia.
       </p>
     </div>
 
@@ -25,14 +23,10 @@ const About = () => (
         </span>
         <h2 className="text-3xl">Rooted in insight, built for action</h2>
         <p className="text-muted">
-          GuazExpress was founded by logistics professionals who witnessed gaps in Ethiopia urban
-          logistics services. A decade in the supply chain sector, combined with academic research at
-          master level, revealed the need for dependable, tech-enabled solutions.
+          We move beyond basic transport by focusing on value. Our differentiator is the combination of proprietary logistics software and deep local expertise. The result is higher on-time delivery rates, reduced costs, and maximum scalability for businesses in Addis Ababa and beyond.
         </p>
         <p className="text-muted">
-          Our founders united their strengths in logistics management, software engineering, and
-          finance to build a company that sets a new benchmark. We integrate knowledge from public and
-          private institutions, backed by practical experience that keeps customers at the center.
+          Our founders united strengths in logistics management, software engineering, and finance to build a company that sets a new benchmark—technology-first, customer-obsessed, and operationally excellent.
         </p>
       </div>
       <div className="space-y-4 rounded-3xl border border-primary/20 bg-primary/10 p-6">
@@ -57,16 +51,12 @@ const About = () => (
         <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-primary-dark">
           Vision and Mission
         </span>
-        <h2 className="text-3xl">Best innovative solutions for urban logistics</h2>
+        <h2 className="text-3xl">Our Mission and Vision</h2>
         <p className="text-muted">
-          Our vision is to provide comprehensive logistical solutions for the sustainable growth of
-          city centers through dependable and creative service, earning the trust and preference of
-          customers.
+          <strong>Vision:</strong> To revolutionize logistics in Ethiopia through innovation, reliability, and unmatched service excellence.
         </p>
         <p className="text-muted">
-          Our mission is to become Ethiopia leading city logistics service provider by utilizing
-          information, innovation, and service excellence to create sustainable social and economic
-          improvements for all stakeholders.
+          <strong>Mission:</strong> Deliver secure, timely, and cost-effective logistics solutions by leveraging cutting-edge technology for real-time tracking, professional mover & packer services, and an expanding last-mile network for Ethiopia's growing retail and e-commerce sectors.
         </p>
       </div>
       <div className="space-y-4">

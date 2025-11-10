@@ -17,46 +17,25 @@ export const coreValues = [
 
 export const services = [
   {
-    title: "Home and Office Move",
+    title: "Household & Office Relocation",
     description:
-      "Relocate anywhere across Addis Ababa or to other cities without the stress. We handle packing, loading, transport, and setup so you can relax while we work.",
+      "Stress-free corporate mover and packer in Addis Ababa. Relocate with confidence with Standard Move, Corporate Move, and Value Added/VIP move options. We handle professional packing and secure transport for all assets.",
     secondary:
-      "Your household belongings, office desks, and sensitive documents arrive safely, protected by experienced movers who respect your space and schedule.",
+      "Expert packing, door-to-door moving, storage solutions, and international moving with customs and documentation support.",
   },
   {
-    title: "Vehicle Ordering",
+    title: "Last-Mile Delivery Network",
     description:
-      "Need a vehicle for personal or business use? We source from trusted dealers, manage customs clearance, and provide secure last-mile delivery to your chosen location.",
+      "Fast e-commerce delivery in Addis Ababa. We facilitate secure and trackable last-mile delivery of online orders and retail goods for a positive customer experience.",
     secondary:
-      "Choose from new, used, or specialized commercial vehicles with confidence that logistics are handled end to end.",
+      "Optimized for complex city addresses with full visibility and contactless handoffs.",
   },
   {
-    title: "Consumer Goods",
+    title: "Industrial & Commercial Logistics",
     description:
-      "Deliver big-ticket purchases or everyday goods straight to your door. Our courier team ensures safe handling and timely delivery, eliminating the scramble for transport.",
+      "Heavy-duty cargo transport for construction, manufacturing, and agribusiness. Efficient movement of high-tonnage cargo across Ethiopia with superior fleet management.",
     secondary:
-      "Ideal for retailers needing dependable last-mile service or individuals transporting valuable items home.",
-  },
-  {
-    title: "Building Material",
-    description:
-      "Construction timelines depend on reliable logistics. We transport cement, steel, timber, sand, and heavy machinery to sites across the city and regions beyond.",
-    secondary:
-      "Our crews coordinate with your project managers to ensure materials arrive exactly when needed.",
-  },
-  {
-    title: "Industrial Goods",
-    description:
-      "Large-scale transport for factories and industrial players. We move heavy machines, factory supplies, and containerized materials with precision.",
-    secondary:
-      "Planning support keeps your production on schedule and your supply chain resilient.",
-  },
-  {
-    title: "Public Products",
-    description:
-      "Trusted partner for government agencies and NGOs. We handle medical supplies, educational materials, relief aid, and essential public goods.",
-    secondary:
-      "Compliance, care, and timely delivery are our priorities for every community-focused deployment.",
+      "Construction materials, raw materials, machinery, and event logistics handled end-to-end.",
   },
 ];
 
@@ -64,27 +43,31 @@ export const innovationHighlights = [
   {
     label: "Real-time tracking",
     description:
-      "Live shipment updates ensure you stay informed and can adjust plans without hesitation.",
+      "Monitor deliveries via web/mobile dashboards with highly accurate live tracking.",
     tag: "RT",
   },
   {
     label: "Route optimization",
-    description: "Advanced routing shortens delivery times and reduces fuel consumption.",
+    description:
+      "AI-powered dynamic routing reduces fuel costs, minimizes delays, and adapts to real-time Addis Ababa traffic.",
     tag: "RO",
   },
   {
     label: "Data-driven insights",
-    description: "Analytics reveal patterns that unlock productivity across your operations.",
+    description:
+      "Analytics reveal patterns that unlock productivity and improve decision-making across operations.",
     tag: "DI",
   },
   {
     label: "Smart warehousing",
-    description: "Digital inventory systems streamline picking, packing, and fulfilment.",
+    description:
+      "Digital inventory and fulfilment systems streamline picking, packing, and warehouse efficiency.",
     tag: "SW",
   },
   {
     label: "Innovative partnerships",
-    description: "Collaboration with technology leaders keeps solutions ahead of demand.",
+    description:
+      "Collaboration with technology leaders keeps our solutions ahead of demand and future-ready.",
     tag: "IP",
   },
 ];
@@ -98,21 +81,31 @@ export const heroStats = [
 
 export const experienceStats = [
   { value: "10+", label: "Years of Expertise" },
-  { value: "Eco", label: "Eco-friendly Operations" },
-  { value: "Green", label: "Next-gen Fleet" },
-  { value: "Community", label: "Committed to Addis Ababa" },
+  { value: "Eco", label: "Sustainable Logistics" },
+  { value: "Safety", label: "Safety & Insurance" },
+  { value: "Community", label: "Community Support" },
 ];
 
 export const testimonials = [
   {
     quote:
-      "I was amazed by how easy my move was with AfroBin Logistics. The team was professional, friendly, and made everything so simple. I highly recommend them.",
-    author: "Sara T.",
+      "The team at AfroBins Logistics made my move stress-free! They were reliable, professional, and handled everything with care. I highly recommend their services!",
+    author: "Robel S., Client",
   },
   {
     quote:
-      "GuazExpress Movers made my move stress-free. Professional team, fair price, and everything perfectly placed in my new home. Truly reliable service.",
+      "Gwaz Express Movers made my move stress-free! Professional team, fair price, and everything perfectly placed in my new home. Truly reliable service!",
     author: "Tewodros Teklearegay",
+  },
+  {
+    quote:
+      "I was impressed by the exceptional service during our office relocation. They went above and beyond to keep everything organized and on schedule.",
+    author: "Seleshi R., Client",
+  },
+  {
+    quote:
+      "I was amazed by how easy my move was with AfroBin Logistics. The team was professional, friendly, and made everything simple.",
+    author: "Sara T., Client",
   },
 ];
 
@@ -145,7 +138,7 @@ export const ecoCommitments = [
 export const contactDetails = [
   {
     label: "Address",
-    value: "22 Area, Nesibu Mola Building, 3rd Floor, Addis Ababa, Ethiopia",
+    value: "ETHIOPIA, ADDIS ABABA, HAYA HULET NEXT TO ADDIS HIWOT HOSPITAL. NESIBUL MOLLA BUILDING 3RD FLOOR.",
   },
   {
     label: "Email",
@@ -153,9 +146,14 @@ export const contactDetails = [
     href: "mailto:contact@guazexpress.com",
   },
   {
-    label: "Phone",
+    label: "Dedicated Helpline (24/7)",
     value: "+251 947 334 444",
     href: "tel:+251947334444",
+  },
+  {
+    label: "Alternative Contact",
+    value: "+251 911 104 341",
+    href: "tel:+251911104341",
   },
 ];
 

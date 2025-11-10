@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { contactDetails } from "../data/siteContent";
+import { sendContactEmails } from "../utils/email";
 
 const initialState = {
   name: "",
@@ -19,15 +20,24 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!formData.name || !formData.email || !formData.phone || !formData.message) {
       setStatus({ type: "error", message: "Please complete the required fields before submitting your message." });
       return;
     }
 
-    setStatus({ type: "success", message: "Thank you. Our team will reach out shortly." });
-    setFormData(initialState);
+    try {
+      setStatus({ type: "loading", message: "Submitting your message..." });
+      await sendContactEmails(formData);
+      setStatus({ type: "success", message: "Thank you. Our team will reach out shortly." });
+      setFormData(initialState);
+    } catch (error) {
+      setStatus({
+        type: "error",
+        message: error?.message || "We could not submit your message. Please try again or call our team directly.",
+      });
+    }
   };
 
   return (
@@ -39,10 +49,9 @@ const Contact = () => {
           </Link>{" "}
           / <span className="text-primary-dark">Contact</span>
         </nav>
-        <h1 className="text-4xl font-semibold">Contact GuazExpress</h1>
+        <h1 className="text-4xl font-semibold">Start Your Move Today. Get a Fast, Transparent Quote.</h1>
         <p className="max-w-3xl text-lg text-muted">
-          We are here to help. Reach out for logistics support, pricing, partnerships, or any other questions and our
-          team responds quickly.
+          Ready to experience the GuazExpress difference? Fill out our quick form or call our dedicated line for a personalized, non-binding quote on your household move, last-mile needs, or industrial transport requirements. Our team is ready 24/7 to assist across Addis Ababa and Ethiopia.
         </p>
       </div>
 
@@ -150,6 +159,8 @@ const Contact = () => {
                 className={`rounded-2xl border px-4 py-3 text-sm ${
                   status.type === "success"
                     ? "border-primary/30 bg-primary/10 text-primary-dark"
+                    : status.type === "loading"
+                    ? "border-primary/20 bg-primary/5 text-primary-dark"
                     : "border-red-200 bg-red-50 text-red-600"
                 }`}
               >

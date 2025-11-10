@@ -26,4 +26,14 @@ npm run build
 
 The compiled assets output to the `dist` directory.
 
+### Environment variables
+
+Create a `.env` file in the project root with:
+
+```
+VITE_BACKEND_URL=https://back.guazexpress.com
+```
+
+`VITE_BACKEND_URL` should point to the deployed backend API that proxies email requests to Resend (defaults to https://back.guazexpress.com if not provided).
+
 > **Note:** Vite 7 requires Node.js 20.19 or newer (or 22.12+). The build completes on Node 20.18 with a warning, but upgrading Node is recommended.
