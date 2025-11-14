@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-import { services, ecoCommitments, innovationHighlights } from "../data/siteContent";
+import { services, ecoCommitments } from "../data/siteContent";
+
+const gallery = ["/12.png", "/House moving 2.jpg", "/3.png"];
 
 const Services = () => (
   <div className="space-y-16">
@@ -10,9 +12,11 @@ const Services = () => (
         </Link>{" "}
         / <span className="text-primary-dark">Services</span>
       </nav>
-      <h1 className="text-4xl font-semibold">End-to-End Logistics Solutions for Every Client Segment in Addis Ababa.</h1>
+      <h1 className="text-4xl font-semibold">Comprehensive Logistics Solutions.</h1>
       <p className="max-w-3xl text-lg text-muted">
-        We offer a full spectrum of integrated logistics services supporting key sectors: Construction & Real Estate, Manufacturers & Suppliers, Households & Offices, and E-Commerce & Retail Chains. We have the specialized personnel and technical infrastructure to manage your specific transport challenge anywhere in Ethiopia.
+        Powered by our unique blend of hands-on experience and a dynamic digital network, GuazExpress delivers movers
+        and packers excellence, international relocations, last-mile delivery, and industrial logistics with a single
+        accountable team.
       </p>
     </div>
 
@@ -21,36 +25,47 @@ const Services = () => (
         <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-primary-dark">
           Core Services
         </span>
-        <h2 className="text-3xl">Our Core Solutions</h2>
+        <h2 className="text-3xl">Integrated support for every move.</h2>
         <p className="max-w-3xl text-muted">
-          From residential moves to complex industrial projects, GuazExpress delivers comprehensive moving logistics with customer-first care.
+          Relocations across borders, office transitions, last-mile networks, and commercial logistics all run on the
+          same intelligent GuazExpress platform.
         </p>
       </header>
       <div className="grid gap-6 lg:grid-cols-2">
-        {services.map(({ title, description, secondary }) => (
-          <article
-            key={title}
-            className="rounded-3xl border border-slate/10 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:border-primary/40"
-          >
-            <h3 className="text-xl font-semibold">{title}</h3>
+        {services.map(({ title, description, features, ctaLabel, ctaLink }) => (
+          <article key={title} className="flex h-full flex-col rounded-3xl border border-slate/10 bg-white p-6 shadow-soft">
+            <h3 className="text-2xl font-semibold">{title}</h3>
             <p className="mt-3 text-sm text-muted">{description}</p>
-            <p className="mt-3 text-sm text-muted">{secondary}</p>
+            <ul className="mt-4 grid gap-2 text-sm text-muted">
+              {features.map((feature) => (
+                <li key={feature} className="flex items-start gap-2">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-primary" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <Link
+              to={ctaLink}
+              className="mt-auto inline-flex items-center justify-start pt-6 text-sm font-semibold text-primary transition hover:text-primary-dark"
+            >
+              {ctaLabel}
+            </Link>
           </article>
         ))}
       </div>
     </section>
 
-    <section className="grid gap-8 rounded-3xl border border-slate/10 bg-white p-8 shadow-soft lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)]">
+    <section className="grid gap-8 rounded-3xl border border-slate/10 bg-white p-8 shadow-soft lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
       <div className="space-y-4">
         <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-primary-dark">
-          Our Experience
+          Our Pillars
         </span>
-        <h2 className="text-3xl">Over 10 years of moving logistics</h2>
+        <h2 className="text-3xl">How we deliver movers and packers excellence.</h2>
         <p className="text-muted">
-          The AfroBin Logistics team brings a decade of practical insight to relocation planning. We help
-          you navigate complexities, manage risks, and deliver every load with care.
+          Every logistics program is anchored in four commitments—reliability, visibility, simplicity, and national
+          growth.
         </p>
-        <ul className="grid gap-2 text-sm text-muted sm:grid-cols-2">
+        <ul className="grid gap-3 text-sm text-muted">
           {ecoCommitments.map((item) => (
             <li key={item} className="rounded-2xl border border-slate/10 bg-surface-light px-4 py-3">
               {item}
@@ -58,16 +73,12 @@ const Services = () => (
           ))}
         </ul>
       </div>
-      <div className="space-y-4 rounded-3xl border border-primary/20 bg-primary/10 p-6">
-        <h3 className="text-xl font-semibold text-primary-dark">Driving the future of city logistics</h3>
-        <div className="space-y-3">
-          {innovationHighlights.slice(0, 4).map(({ label, description }) => (
-            <div key={label} className="rounded-2xl border border-slate/10 bg-white/60 p-4">
-              <h4 className="text-sm font-semibold text-primary-dark">{label}</h4>
-              <p className="text-sm text-muted">{description}</p>
-            </div>
-          ))}
-        </div>
+      <div className="grid gap-4">
+        {gallery.map((src) => (
+          <div key={src} className="overflow-hidden rounded-2xl border border-slate/10">
+            <img src={src} alt="GuazExpress service delivery" className="h-40 w-full object-cover" loading="lazy" />
+          </div>
+        ))}
       </div>
     </section>
 
@@ -76,16 +87,24 @@ const Services = () => (
         <div className="space-y-4">
           <h2 className="text-3xl font-semibold">Need a tailored logistics program?</h2>
           <p className="max-w-2xl text-sm text-white/85">
-            Our consultants map the fastest path from strategy to execution. Share your project details and
-            we will design a plan that fits.
+            Tell us about your movers and packers requirements, last-mile delivery challenges, or industrial logistics
+            plans. Our consultants map the fastest path from strategy to execution.
           </p>
         </div>
-        <Link
-          to="/contact"
-          className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary transition hover:bg-white/90"
-        >
-          Talk to a specialist
-        </Link>
+        <div className="flex flex-col gap-4 sm:flex-row">
+          <Link
+            to="/order"
+            className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary transition hover:bg-white/90"
+          >
+            Get a Quote
+          </Link>
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            Talk to a Specialist
+          </Link>
+        </div>
       </div>
     </section>
   </div>
