@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import Services from "./pages/Services";
 import Network from "./pages/Network";
 import InternationalRelocation from "./pages/InternationalRelocation";
+import Blog from "./pages/Blog";
 
 const App = () => (
   <BrowserRouter>
@@ -16,6 +17,7 @@ const App = () => (
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/network" element={<Network />} />
+        <Route path="/blog" element={<Blog />} />
         <Route path="/international-relocation" element={<InternationalRelocation />} />
         <Route path="/order" element={<Order />} />
         <Route path="/contact" element={<Contact />} />
