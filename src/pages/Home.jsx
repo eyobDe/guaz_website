@@ -8,7 +8,7 @@ import {
   testimonials,
 } from "../data/siteContent";
 
-const serviceGallery = ["/House moving 1.jpg", "/7.png", "/3.png", "/4.png"];
+const serviceGallery = ["/7.png", "/House moving 1.jpg", "/3.png", "/4.png"];
 const appScreenshots = [
   "/Guazapp screenshot 1.png",
   "/Guazapp screenshot 2.png",
@@ -248,35 +248,6 @@ const Home = () => (
         </div>
       </section>
 
-    <section className="grid gap-10 rounded-3xl border border-slate/10 bg-white p-8 shadow-soft lg:grid-cols-[minmax(0,1fr)_minmax(0,0.7fr)]">
-      <div className="space-y-6">
-        <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-primary-dark">
-          Performance Backed by Data
-        </span>
-        <h2 className="text-3xl sm:text-4xl">Numbers that keep Ethiopia moving.</h2>
-        <p className="text-muted">
-          Logistics jobs in Ethiopia depend on trusted partners. We keep crews employed, vehicles optimized, and
-          customers informed.
-        </p>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {experienceStats.map(({ value, label }) => (
-            <div key={label} className="rounded-3xl border border-slate/10 bg-white p-6 text-center shadow-soft">
-              <div className="text-3xl font-semibold text-primary-dark">{value}</div>
-              <p className="mt-2 text-sm font-medium text-muted">{label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="space-y-4 rounded-3xl border border-primary/20 bg-primary/5 p-6">
-        <h3 className="text-xl font-semibold text-primary-dark">Industries we empower</h3>
-        <ul className="space-y-3 text-sm text-muted">
-          <li>Household moving Addis Ababa & nationwide relocations.</li>
-          <li>Office movers in Addis Ababa with minimal downtime.</li>
-          <li>Delivery companies in Ethiopia needing last-mile reach.</li>
-          <li>Industrial shippers demanding visibility and compliance.</li>
-        </ul>
-      </div>
-    </section>
 
     <section className="space-y-8">
       <header className="max-w-3xl space-y-4">

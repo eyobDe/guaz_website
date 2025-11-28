@@ -1,12 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { blogPosts } from "../data/blogData";
 
 const Blog = () => {
+  const [selectedBlog, setSelectedBlog] = useState(blogPosts[0]);
+
   useEffect(() => {
     if (window.gtag) {
       window.gtag("config", "G-6HMHCJMLS3", { page_path: "/blog" });
     }
-  }, []);
+    // Scroll to top when selected blog changes
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [selectedBlog]);
 
   return (
     <div className="space-y-16">
@@ -23,81 +28,100 @@ const Blog = () => {
         </p>
       </div>
 
-      <section className="space-y-8 rounded-3xl border border-slate/10 bg-white p-8 shadow-soft">
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
-          <div className="space-y-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.5em] text-primary-dark">Featured Insight</p>
-            <h2 className="text-3xl font-semibold">The Month-End Move</h2>
-            <p className="text-sm text-muted">
-              Why the last days of the month are crowded, costly, and how to outsmart the rush with smart timing.
-            </p>
-          </div>
-          <div className="space-y-2">
-            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-primary-dark">Author</p>
-            <div className="flex items-center gap-3">
-              <img
-                src="/Biniyam Ketema, CEO Afobin Logisitcs PLC.jpg"
-                alt="Biniyam Ketema"
-                className="h-16 w-16 rounded-full object-cover"
-                loading="lazy"
-              />
-              <div>
-                <p className="text-sm font-semibold text-primary-dark">Biniyam Ketema</p>
-                <p className="text-xs text-muted">Founder, AfroBin Logistics - GuazExpress</p>
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+        {/* Main Content Area */}
+        <section className="lg:col-span-2 space-y-8 rounded-3xl border border-slate/10 bg-white p-8 shadow-soft h-fit">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+            <div className="space-y-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.5em] text-primary-dark">Featured Insight</p>
+              <h2 className="text-3xl font-semibold">{selectedBlog.title}</h2>
+              <p className="text-sm text-muted">
+                {selectedBlog.excerpt}
+              </p>
+            </div>
+            <div className="space-y-2">
+              <p className="text-xs font-semibold uppercase tracking-[0.4em] text-primary-dark">Author</p>
+              <div className="flex items-center gap-3">
+                {selectedBlog.authorImage ? (
+                  <img
+                    src={selectedBlog.authorImage}
+                    alt={selectedBlog.author}
+                    className="h-16 w-16 rounded-full object-cover"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-xl font-bold text-primary-dark">
+                    {selectedBlog.author ? selectedBlog.author.charAt(0) : "G"}
+                  </div>
+                )}
+                <div>
+                  <p className="text-sm font-semibold text-primary-dark">{selectedBlog.author}</p>
+                  <p className="text-xs text-muted">{selectedBlog.authorRole}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="grid gap-4 md:grid-cols-2">
-          <img
-            src="/Blog1 Assets/photo_2025-11-14_11-06-09.jpg"
-            alt="Packed truck"
-            className="h-48 w-full rounded-3xl object-cover"
-          />
-          <img
-            src="/Blog1 Assets/photo_2025-11-14_11-06-22.jpg"
-            alt="Crew working"
-            className="h-48 w-full rounded-3xl object-cover"
-          />
-        </div>
-        <article className="space-y-6 text-sm text-muted">
-          <p>
-            <strong>The Month-End Move:</strong> If you’ve ever tried to book a moving company for the last few days of the
-            month, you’ve likely encountered fully booked schedules and higher prices. This isn't a coincidence; it’s a
-            direct result of supply and demand. At Guaz Movers, with 16 years of experience on Ethiopian roads, we see
-            this pattern every month. Understanding why helps you plan a smarter, less stressful, and more affordable move.
-          </p>
-          <div className="space-y-2 rounded-3xl border border-slate/10 bg-primary/5 p-4 text-sm text-primary-dark">
-            <p className="font-semibold">Why Month-Ends are Chaotic</p>
-            <ul className="space-y-1 pl-4 text-xs text-primary-dark">
-              <li>Lease cycle alignment aligns most your move dates within a narrow 3-4 day window.</li>
-              <li>Payday timing makes the end of month the most affordable time to relocate.</li>
-              <li>Companies shift offices around financial cutoffs, adding commercial demand.</li>
-            </ul>
+
+          {selectedBlog.images && selectedBlog.images.length > 0 && (
+            <div className={`grid gap-4 ${selectedBlog.images.length > 1 ? "md:grid-cols-2" : "grid-cols-1"}`}>
+              {selectedBlog.images.map((img, index) => (
+                <img
+                  key={index}
+                  src={img}
+                  alt={`Blog visual ${index + 1}`}
+                  className="h-48 w-full rounded-3xl object-cover"
+                />
+              ))}
+            </div>
+          )}
+
+          <article className="space-y-6 text-sm text-muted">
+            {selectedBlog.content}
+          </article>
+        </section>
+
+        {/* Sidebar List */}
+        <aside className="lg:col-span-1 space-y-6">
+          <h3 className="text-xl font-semibold text-primary-dark">More Insights</h3>
+          <div className="flex flex-col gap-4">
+            {blogPosts.map((post) => {
+              const isSelected = post.id === selectedBlog.id;
+              return (
+                <div
+                  key={post.id}
+                  onClick={() => setSelectedBlog(post)}
+                  className={`group cursor-pointer rounded-2xl border p-4 transition-all duration-200 ${
+                    isSelected
+                      ? "border-primary bg-primary/5 shadow-md scale-[1.02]"
+                      : "border-slate/10 bg-white shadow-sm hover:border-primary/30 hover:shadow-md"
+                  }`}
+                >
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                        <p className="text-xs font-medium text-muted">{post.date}</p>
+                        {isSelected && <span className="text-xs font-bold text-primary">Reading</span>}
+                    </div>
+                    
+                    <h4 className={`font-semibold transition-colors line-clamp-2 ${isSelected ? 'text-primary' : 'text-primary-dark group-hover:text-primary'}`}>
+                        {post.title}
+                    </h4>
+                    
+                    <p className="text-xs text-muted line-clamp-3 leading-relaxed">
+                        {post.excerpt}
+                    </p>
+                    
+                    {!isSelected && (
+                        <div className="text-xs font-semibold text-primary flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                            Read Article <span>→</span>
+                        </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
-          <p>
-            Peak pricing kicks in as trucks and crews stay fixed while demand spikes. Higher service rates, hidden rush
-            fees, and limited negotiation power all increase the final quote. There’s also a higher risk of inexperienced
-            crews or fly-by-night operators offering low prices but poor outcomes.
-          </p>
-          <p>
-            <strong>Your strategy:</strong> Aim for mid-month moves, book 3-4 weeks ahead if you must move at month-end, and
-            choose weekdays to dodge the highest demand. Even a 48-hour shift away from the 30th can unlock better pricing.
-          </p>
-          <p>
-            <strong>How Guaz Movers helps:</strong> We operate with transparent peak pricing, prioritize bookings in the
-            order received, and rely on expert crew management so your belongings stay protected even during the rush.
-          </p>
-          <p>
-            While the end of the month feels logical, it’s often the most expensive and stressful. Shift by a week or two,
-            and you’ll find better rates, more availability, and a calmer moving experience.
-          </p>
-          <p className="text-sm font-semibold text-primary-dark">
-            Ready to plan smarter? Contact Guaz Movers today for a free, no-obligation quote and let 16 years of experience
-            guide your next move.
-          </p>
-        </article>
-      </section>
+        </aside>
+      </div>
     </div>
   );
 };

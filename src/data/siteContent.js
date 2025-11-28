@@ -117,9 +117,7 @@ export const advantageHighlights = [
 
 export const heroStats = [
   { value: "16+", label: "Years of Moving Mastery" },
-  { value: "300+", label: "Connected Trucks" },
   { value: "24/7", label: "Support & Tracking" },
-  { value: "1300+", label: "Moves & Deliveries / Month" },
 ];
 
 export const experienceStats = [
